@@ -6,7 +6,7 @@ const Hero = () => {
   const [APIData, setAPIData] = useState([])
   const getAPIData = async () => {
     try {
-      const response = await axios.get('http://unfilteredfreedom.com/api/public/api/applied_auction/applied/sell', {
+      const response = await axios.get('https://catfact.ninja/fact', {
         headers: {
           APP_KEY: "asdljipwiasdlkgsdogjr"
         }
@@ -18,7 +18,7 @@ const Hero = () => {
     }
   }
   useEffect(() => {
-    // getAPIData()
+  getAPIData()
   }, []);
 
   return (
@@ -42,13 +42,16 @@ const Hero = () => {
           </Col>
         </Row>
         <Row className="align-items-center">
-          {APIData.map((item, i) => {
+          {/* {APIData.map((item, i) => {
             return (
               <Col className="overflow-hidden"  key={i} lg={3}>
-                {JSON.stringify(item)}
+                {JSON.stringify(APIData)}
               </Col>
             );
-          })}
+          })} */}
+              <Col className="overflow-hidden"   lg={3}>
+                {JSON.stringify(APIData)}
+              </Col>
         </Row>
       </Container>
     </section>
