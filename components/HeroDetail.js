@@ -4,9 +4,9 @@ import Link from "next/link";
 import axios from 'axios'
 import useSWR from 'swr'
 
-const Hero = ({ data, id }) => {
-  const [item, setItem] = useState()
-  console.log("data", id.id)
+const Hero = ({ data }) => {
+  const [item, setItem] = useState([])
+  console.log("data::: ", data)
 
 
 
@@ -22,16 +22,16 @@ const Hero = ({ data, id }) => {
   //   catch (err) {
   //   }
   // }
-  useEffect(() => {
-    if (id.id) {
-      findItem()
-    }
-  }, [id.id]);
+  // useEffect(() => {
+  //   if (id.id) {
+  //     findItem()
+  //   }
+  // }, [id.id]);
 
-  const findItem = () => {
-    const found = data.find((_item) => _item.id == id.id)
-    setItem(found)
-  }
+  // const findItem = () => {
+  //   const found = data.find((_item) => _item.id == id.id)
+  //   setItem(found)
+  // }
 
 
 
@@ -42,9 +42,9 @@ const Hero = ({ data, id }) => {
       <Container>
         
         <div className="d-flex flex-column align-items-start">
-          {item && <div style={{ cursor: "pointer" }}  className='d-flex align-items-center'>
-            <p className=''>{item.id}:  </p>
-            <p className=''>{item.title}</p>
+          {data && <div style={{ cursor: "pointer" }}  className='d-flex align-items-center'>
+            <p className=''>{data.id}:  </p>
+            <p className=''>{data.title}</p>
           </div>}
           <Col className="overflow-hidden" lg={3}>
             {/* {JSON.stringify(APIData)} */}
