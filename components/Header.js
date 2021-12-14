@@ -31,14 +31,14 @@ const Header = () => {
     <div className={`header${sticky ? ' sticky' : ''}`}>
       <Navbar light expand="md">
         <Container>
-          <NavbarBrand href="/">LOGO</NavbarBrand>
+          <NavbarBrand href="/">NEXT.js APP ALPHASQUAD</NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="m-auto" navbar>
               <NavItem>
                 <NavLink href="/">Home</NavLink>
               </NavItem>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink href="#feature">Features</NavLink>
               </NavItem>
               <NavItem>
@@ -46,7 +46,7 @@ const Header = () => {
               </NavItem>
               <NavItem>
                 <NavLink href="#about">About</NavLink>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
               <NavLink href="detail">Detail</NavLink>
 

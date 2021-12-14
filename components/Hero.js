@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import Link from "next/link";
 import axios from 'axios'
 import useSWR from 'swr'
 
-const Hero = () => {
+const Hero = ({ data,id }) => {
   const [APIData, setAPIData] = useState([])
-  const getAPIData = async () => {
-    try {
-      const response = await axios.get('https://alpha-squad-uploads.s3.amazonaws.com/posts.json', {
-      }).then((response) => {
-        setAPIData(response.data)
-      });
-    }
-    catch (err) {
-    }
-  }
-  useEffect(() => {
-    getAPIData()
-  }, []);
+  console.log("data", data)
+
+
+
+  // const getAPIData = async () => {
+  //   try {
+  //     const response = await axios.get('https://alpha-squad-uploads.s3.amazonaws.com/posts.json', {
+  //     }).then((response) => {
+  //       setAPIData(response.data)
+  //     });
+  //   }
+  //   catch (err) {
+  //   }
+  // }
+  // useEffect(() => {
+  //   getAPIData()
+  // }, []);
 
   return (
     <section className="section position-relative">
@@ -40,12 +45,14 @@ const Hero = () => {
           </Col>
         </Row>
         <div className="d-flex flex-column align-items-start">
-          {APIData.map((item, i) => {
+          {data.map((item, i) => {
             return (
-              <div className='d-flex align-items-center '>
-                <p className=''>{item.id}:  </p>
-                <p className=''>{item.title}</p>
-              </div>
+              <Link href={`/detail/${item.id}`}>
+                <div style={{cursor:"pointer"}} key={i} className='d-flex align-items-center'>
+                  <p className=''>{item.id}:  </p>
+                  <p className=''>{item.title}</p>
+                </div>
+              </Link>
             );
           })}
           <Col className="overflow-hidden" lg={3}>
@@ -58,5 +65,6 @@ const Hero = () => {
     </section>
   );
 }
+
 
 export default Hero;
