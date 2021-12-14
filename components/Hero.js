@@ -4,7 +4,7 @@ import axios from 'axios'
 import useSWR from 'swr'
 
 const Hero = () => {
-  const [APIData, setAPIData] = useState([]) 
+  const [APIData, setAPIData] = useState([])
   const getAPIData = async () => {
     try {
       const response = await axios.get('https://alpha-squad-uploads.s3.amazonaws.com/posts.json', {
@@ -39,20 +39,21 @@ const Hero = () => {
             </div>
           </Col>
         </Row>
-        <Row className="align-items-center">
-          {/* {APIData.map((item, i) => {
+        <div className="d-flex flex-column align-items-start">
+          {APIData.map((item, i) => {
             return (
-              <Col className="overflow-hidden"  key={i} lg={3}>
-                {JSON.stringify(APIData)}
-              </Col>
+              <div className='d-flex align-items-center '>
+                <p className=''>{item.id}:  </p>
+                <p className=''>{item.title}</p>
+              </div>
             );
-          })} */}
+          })}
           <Col className="overflow-hidden" lg={3}>
-            {JSON.stringify(APIData)}
+            {/* {JSON.stringify(APIData)} */}
             {/* {error ? <div>failed to load</div> : ""}
             {!data ? <div>loading...</div> : JSON.stringify(data)} */}
           </Col>
-        </Row>
+        </div>
       </Container>
     </section>
   );
