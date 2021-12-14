@@ -4,13 +4,19 @@ import axios from 'axios'
 import useSWR from 'swr'
 
 const Hero = () => {
-  const [APIData, setAPIData] = useState([])
-  const fetcher = url => axios.get(url).then(res => res.data) 
-  const { data, error } = useSWR('https://catfact.ninja/fact', fetcher)
-  
- 
+  const [APIData, setAPIData] = useState([]) 
+  const getAPIData = async () => {
+    try {
+      const response = await axios.get('https://alpha-squad-uploads.s3.amazonaws.com/posts.json', {
+      }).then((response) => {
+        setAPIData(response.data)
+      });
+    }
+    catch (err) {
+    }
+  }
   useEffect(() => {
-   
+    getAPIData()
   }, []);
 
   return (
@@ -42,9 +48,9 @@ const Hero = () => {
             );
           })} */}
           <Col className="overflow-hidden" lg={3}>
-            {/* {JSON.stringify(APIData)} */}
-            {error ? <div>failed to load</div> : ""}
-            {!data ? <div>loading...</div> : JSON.stringify(data)}
+            {JSON.stringify(APIData)}
+            {/* {error ? <div>failed to load</div> : ""}
+            {!data ? <div>loading...</div> : JSON.stringify(data)} */}
           </Col>
         </Row>
       </Container>
