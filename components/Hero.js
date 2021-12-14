@@ -3,21 +3,25 @@ import { Container, Row, Col } from 'reactstrap';
 import axios from 'axios'
 import useSWR from 'swr'
 
-const Hero = () => {
+const Hero = ({ data }) => {
   const [APIData, setAPIData] = useState([])
-  const getAPIData = async () => {
-    try {
-      const response = await axios.get('https://alpha-squad-uploads.s3.amazonaws.com/posts.json', {
-      }).then((response) => {
-        setAPIData(response.data)
-      });
-    }
-    catch (err) {
-    }
-  }
-  useEffect(() => {
-    getAPIData()
-  }, []);
+  console.log("data", data)
+
+
+
+  // const getAPIData = async () => {
+  //   try {
+  //     const response = await axios.get('https://alpha-squad-uploads.s3.amazonaws.com/posts.json', {
+  //     }).then((response) => {
+  //       setAPIData(response.data)
+  //     });
+  //   }
+  //   catch (err) {
+  //   }
+  // }
+  // useEffect(() => {
+  //   getAPIData()
+  // }, []);
 
   return (
     <section className="section position-relative">
@@ -40,7 +44,7 @@ const Hero = () => {
           </Col>
         </Row>
         <div className="d-flex flex-column align-items-start">
-          {APIData.map((item, i) => {
+          {data.map((item, i) => {
             return (
               <div className='d-flex align-items-center '>
                 <p className=''>{item.id}:  </p>
@@ -58,5 +62,6 @@ const Hero = () => {
     </section>
   );
 }
+
 
 export default Hero;
