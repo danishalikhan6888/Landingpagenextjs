@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import Link from "next/link";
 import axios from 'axios'
 import useSWR from 'swr'
 
-const Hero = ({ data }) => {
+const Hero = ({ data,id }) => {
   const [APIData, setAPIData] = useState([])
   console.log("data", data)
 
@@ -46,10 +47,12 @@ const Hero = ({ data }) => {
         <div className="d-flex flex-column align-items-start">
           {data.map((item, i) => {
             return (
-              <div className='d-flex align-items-center '>
-                <p className=''>{item.id}:  </p>
-                <p className=''>{item.title}</p>
-              </div>
+              <Link href={`/detail/${item.id}`}>
+                <div style={{cursor:"pointer"}} key={i} className='d-flex align-items-center'>
+                  <p className=''>{item.id}:  </p>
+                  <p className=''>{item.title}</p>
+                </div>
+              </Link>
             );
           })}
           <Col className="overflow-hidden" lg={3}>

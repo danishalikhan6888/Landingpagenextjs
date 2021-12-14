@@ -1,13 +1,17 @@
-import Layout from "../components/Layout";
-import Header from "../components/Header";
-import Hero from "../components/Hero";
-import Feature from '../components/Feature';
-import Service from '../components/Service';
-import About from '../components/About';
-import Footer from '../components/Footer';
+import Layout from "../../components/Layout";
+import Header from "../../components/Header";
+import Hero from "../../components/HeroDetail";
+import Feature from '../../components/Feature';
+import Service from '../../components/Service';
+import About from '../../components/About';
+import Footer from '../../components/Footer';
+import { useRouter } from "next/router";
 import { Container, Row, Col } from 'reactstrap';
 
 const Index = ({ data }) => {
+  const router = useRouter();
+  const id = router.query
+  console.log(id)
   return (
     <Layout pageTitle="Landing Page Nextjs">
       <Header />
@@ -18,7 +22,7 @@ const Index = ({ data }) => {
           </Col>
         </Row>
       </Container>
-      <Hero data={data} />
+      <Hero data={data} id={id}/>
       <Footer />
     </Layout>
   )
